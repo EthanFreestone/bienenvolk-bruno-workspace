@@ -1,12 +1,12 @@
 {
   "name": "@kint/bruno_shared_scripts",
   "version": "1.0.0",
+  "exports": "./es/index.js",
   "main": "index.js",
-  "exports": "exports.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "esbuild ./index.js --bundle --outfile=exports.js"
+    "build": "esbuild ./index.js --bundle --format=cjs --outdir=es"
   },
   "devDependencies": {
     "esbuild": "0.23.0"
