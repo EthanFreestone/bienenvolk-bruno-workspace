@@ -1,0 +1,16 @@
+{
+  "name": "bienenvolk-collection",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-local-scripts": "cd ../bruno_shared_scripts && npm run build && cd '../Bienenvolk Collection'",
+    "install-all": "npm run build-local-scripts && npm install"
+  },
+  "type": "module",
+  "author": "",
+  "description": "",
+  "dependencies": {
+    "@kint/bruno_shared_scripts": "../bruno_shared_scripts"
+  }
+}
