@@ -16,14 +16,97 @@ var __copyProps = (to, from, except, desc) => {
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// index.js
-var bruno_shared_scripts_exports = {};
-__export(bruno_shared_scripts_exports, {
-  getBaseUrl: () => getBaseUrl
+// src/index.js
+var src_exports = {};
+__export(src_exports, {
+  getBaseUrl: () => getBaseUrl,
+  getCreds: () => getCreds,
+  getIgnoreCreds: () => getIgnoreCreds,
+  getPassword: () => getPassword,
+  getTenant: () => getTenant,
+  getToken: () => getToken,
+  getUserName: () => getUserName,
+  login: () => login,
+  loginWithExpiry: () => loginWithExpiry,
+  setBaseUrl: () => setBaseUrl
 });
-module.exports = __toCommonJS(bruno_shared_scripts_exports);
+module.exports = __toCommonJS(src_exports);
 
-// utils/baseUrl.js
+// src/utils/baseUrl.js
+var okapiProtocol = bru.getEnvVar("okapiProtocol");
+var okapiUrl = bru.getEnvVar("okapiUrl");
+var okapiPort = bru.getEnvVar("okapiPort");
 var getBaseUrl = () => {
-  console.log("I'm at least working in context here");
+  return bru.getEnvVar("baseUrl");
 };
+var setBaseUrl = () => {
+  const baseUrl = `${okapiProtocol}://${okapiUrl}${okapiPort ? ":" + okapiPort : ""}`;
+  bru.setEnvVar("baseUrl", baseUrl);
+};
+
+// src/auth/auth-utils.js
+var getTenant = () => {
+  return bru.getEnvVar("x-okapi-tenant-value");
+};
+var getToken = () => {
+  return bru.getVar("x-okapi-token");
+};
+var getIgnoreCreds = () => {
+  return bru.getEnvVar("ignoreCreds");
+};
+var getUserName = () => {
+  return bru.getEnvVar("username");
+};
+var getPassword = () => {
+  return bru.getEnvVar("password");
+};
+var getCreds = () => {
+  const username = getUserName();
+  const password = getPassword();
+  return {
+    username,
+    password
+  };
+};
+
+// src/auth/login.js
+var axios = require("axios");
+var getLoginWithExpiryUrl = () => {
+  const baseUrl = getBaseUrl();
+  return `${baseUrl}/authn/login-with-expiry`;
+};
+var getLoginUrl = () => {
+  const baseUrl = getBaseUrl();
+  return `${baseUrl}/authn/login`;
+};
+var loginFunc = async (withExpiry = true) => {
+  const ignoreCreds = getIgnoreCreds();
+  const preExistingHeaders = req.getHeaders();
+  console.log("PEH: %o", preExistingHeaders);
+  req.setHeader("x-okapi-tenant", getTenant());
+  if (!ignoreCreds || ignoreCreds === false) {
+    const url = withExpiry ? getLoginWithExpiryUrl() : getLoginUrl();
+    console.log(`Sending login request to ${url}`);
+    await axios.post(
+      url,
+      getCreds(),
+      {
+        headers: {
+          "Content-type": "application/json",
+          "x-okapi-tenant": getTenant()
+        }
+      }
+    ).then((internalRes) => {
+      const token = internalRes.headers.get("x-okapi-token");
+      console.log("INTERNAL RES: %o", internalRes);
+      bru.setVar("x-okapi-token-value", token);
+    }).catch((err) => {
+      console.error("WHAT HAPPENED HERE: %o", err);
+    });
+    if (!withExpiry) {
+      req.setHeader("x-okapi-token", getToken());
+    }
+  }
+};
+var login = () => loginFunc(false);
+var loginWithExpiry = () => loginFunc();

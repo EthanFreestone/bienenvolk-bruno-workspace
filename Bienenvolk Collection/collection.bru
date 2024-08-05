@@ -1,6 +1,8 @@
 script:pre-request {
-  //console.log("PROCESS: %o", process)
+  const { login, loginWithExpiry, setBaseUrl } = require('@kint/bruno_shared_scripts');
+  setBaseUrl();
   
-  const { getBaseUrl } = require('@kint/bruno_shared_scripts');
-  getBaseUrl()
+  //await login();
+  await loginWithExpiry();
+  
 }
