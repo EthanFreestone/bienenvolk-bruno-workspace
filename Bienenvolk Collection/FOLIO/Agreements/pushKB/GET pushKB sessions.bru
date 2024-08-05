@@ -1,0 +1,11 @@
+meta {
+  name: GET pushKB sessions
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/erm/pushKB/sessions
+  body: json
+  auth: none
+}

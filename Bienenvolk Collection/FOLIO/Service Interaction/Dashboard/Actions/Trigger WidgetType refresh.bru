@@ -1,0 +1,15 @@
+meta {
+  name: Trigger WidgetType refresh
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/servint/admin/triggerTypeImport
+  body: none
+  auth: none
+}
+
+params:query {
+  ~filters: section=Testing
+}

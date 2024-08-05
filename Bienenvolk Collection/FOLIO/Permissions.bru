@@ -1,0 +1,17 @@
+meta {
+  name: Permissions
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/perms/permissions?length=10000&query=childOf==[] and cql.allRecords=1 NOT moduleName=mod-service-interaction NOT moduleName=mod-agreements NOT moduleName=folio_agreements NOT moduleName=folio_licenses NOT moduleName=folio_local-kb-admin NOT moduleName=folio_erm-comparisons NOT moduleName=folio_dashboard NOT permissionName=general.*&expandSubs=true
+  body: none
+  auth: none
+}
+
+params:query {
+  length: 10000
+  query: childOf==[] and cql.allRecords=1 NOT moduleName=mod-service-interaction NOT moduleName=mod-agreements NOT moduleName=folio_agreements NOT moduleName=folio_licenses NOT moduleName=folio_local-kb-admin NOT moduleName=folio_erm-comparisons NOT moduleName=folio_dashboard NOT permissionName=general.*
+  expandSubs: true
+}

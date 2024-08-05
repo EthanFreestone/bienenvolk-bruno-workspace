@@ -1,0 +1,26 @@
+meta {
+  name: PUT KB Direct
+  type: http
+  seq: 14
+}
+
+put {
+  url: {{baseUrl}}/erm/kbs/ae6e426b-ad47-48ab-8f87-d36fbd13dc47
+  body: json
+  auth: none
+}
+
+params:query {
+  ~expand: items
+  ~stats: true
+}
+
+body:json {
+  {
+      "syncStatus": null,
+      "cursor": null,
+      "active": false
+      //"cursor": "2022-08-09T16:15:47Z",
+      //"active": true
+  }
+}

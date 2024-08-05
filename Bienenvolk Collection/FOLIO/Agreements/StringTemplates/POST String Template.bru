@@ -1,0 +1,27 @@
+meta {
+  name: POST String Template
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/erm/sts
+  body: json
+  auth: none
+}
+
+headers {
+  ~X-Okapi-Tenant: test5
+}
+
+body:json {
+  {
+      "name": "Test2",
+      "rule": "test2--{{inputUrl}}",
+      "idScopes": [
+          {{platform1}}, {{platform2}}, {{platform3}}
+      ],
+      //"context": "urlProxier"
+      "context": "urlCustomiser"
+  }
+}

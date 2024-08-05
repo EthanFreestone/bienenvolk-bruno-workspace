@@ -1,0 +1,19 @@
+meta {
+  name: Trigger Licenses Housekeeping
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/licenses/admin/triggerHousekeeping
+  body: none
+  auth: none
+}
+
+params:query {
+  ~match: name
+  ~match: alternateNames.name
+  ~match: description
+  ~term: test
+  ~sort: agreementStatus.label;asc
+}

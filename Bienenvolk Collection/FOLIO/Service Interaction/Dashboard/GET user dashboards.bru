@@ -1,0 +1,18 @@
+meta {
+  name: GET user dashboards
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/servint/dashboard/my-dashboards?sort=defaultUserDashboard;desc&sort=userDashboardWeight;asc&sort=dateCreated;desc
+  body: none
+  auth: none
+}
+
+params:query {
+  sort: defaultUserDashboard;desc
+  sort: userDashboardWeight;asc
+  sort: dateCreated;desc
+  ~filters: id!=4e59b3df-7d5c-4566-aa3e-798385bcd534
+}

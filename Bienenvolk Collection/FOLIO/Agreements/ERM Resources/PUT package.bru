@@ -1,0 +1,20 @@
+meta {
+  name: PUT package
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{baseUrl}}/erm/packages/7b4725e1-2f55-4f14-8cd7-fedc609539c9
+  body: text
+  auth: none
+}
+
+params:query {
+  ~stats: true
+}
+
+body:text {
+  {
+  }
+}

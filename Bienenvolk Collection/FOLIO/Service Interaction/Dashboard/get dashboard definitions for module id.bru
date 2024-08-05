@@ -1,0 +1,56 @@
+meta {
+  name: get dashboard definitions for module id
+  type: http
+  seq: 18
+}
+
+get {
+  url: {{baseUrl}}/dashboard/definitions
+  body: none
+  auth: none
+}
+
+params:query {
+  ~stats: true
+}
+
+headers {
+  X-Okapi-Module-Id: {{x-okapi-module-id}}
+}
+
+script:pre-request {
+  const wantedModule = "mod-agreements"
+  
+  const xOkapiTenantValue = bru.getEnvVar("x-okapi-tenant-value");
+  const xOkapiTokenValue = bru.getEnvVar("x-okapi-token-value");
+  const okapiPort = bru.getEnvVar("okapiPort");
+  const okapiProtocol = bru.getEnvVar("okapiProtocol");
+  const okapiUrl = bru.getEnvVar("okapiUrl");
+  const username = bru.getEnvVar("username");
+  const password = bru.getEnvVar("password");
+  const baseUrl = bru.getEnvVar("baseUrl");
+  
+  const getDashboardImplementers = {
+      url: `${baseUrl}/_/proxy/tenants/${xOkapiTenantValue}/modules?provide=dashboard`,
+      method: 'GET',
+      header: {
+          "Content-type": "application/json",
+          "x-okapi-tenant": xOkapiTenantValue,
+          "x-okapi-token": xOkapiTokenValue
+      }
+  };
+  
+  // This will set the module id to the first implementer of dashboard interface
+  // pm.sendRequest(getDashboardImplementers, function (err, res) {
+      console.log(err ? err : res.json());
+      var implementers = res.json()
+      var re = new RegExp(`${wantedModule}.*`, "g");
+      // No optional chaining yet
+      let moduleId;
+      var module = implementers.find(imp => imp.id.match(re) !== null);
+      if (module) {
+          moduleId = module.id;
+      }
+  bru.setEnvVar("x-okapi-module-id", moduleId)
+  });
+}

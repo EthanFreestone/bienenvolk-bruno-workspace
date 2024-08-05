@@ -1,0 +1,16 @@
+meta {
+  name: GET dashboard users
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/servint/dashboard/{{myDashboardId}}/users
+  body: none
+  auth: none
+}
+
+params:query {
+  ~filters: id!=4e59b3df-7d5c-4566-aa3e-798385bcd534
+  ~stats: true
+}

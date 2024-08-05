@@ -1,0 +1,18 @@
+meta {
+  name: POST ChecklistItemDefinition
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/oa/checklistItems
+  body: text
+  auth: none
+}
+
+body:text {
+  {
+      "description": "A checklist item description",
+      "name": "ChecklistItem"
+  }
+}

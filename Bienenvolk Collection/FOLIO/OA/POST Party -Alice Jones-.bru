@@ -1,0 +1,23 @@
+meta {
+  name: POST Party -Alice Jones-
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/oa/party
+  body: text
+  auth: none
+}
+
+body:text {
+  {
+      "phone": "07123456789",
+      "mobile": "07123456789",
+      "title": "Mrs",
+      "orcidId": "123",
+      "mainEmail": "a@b.com",
+      "givenNames": "Alice",
+      "familyName": "Jones"
+  }
+}

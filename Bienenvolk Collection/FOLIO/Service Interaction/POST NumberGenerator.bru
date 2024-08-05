@@ -1,0 +1,24 @@
+meta {
+  name: POST NumberGenerator
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/servint/numberGenerators
+  body: text
+  auth: none
+}
+
+body:text {
+  {
+      "code": "UserBarcode",
+      "name": "User Barcode",
+      "sequences":[
+          { "code":"patron", "prefix":"user-", "postfix":null, "format":"000000000" },
+          { "code":"staff", "prefix":"staff-", "postfix":"-test", "format":"000,000,000" },
+          { "code":"noformat", "prefix":"nf-" },
+          { "code":"highinit", "prefix":"hi-", "format":"000000000", "nextValue": 100000 },
+      ]
+  }
+}

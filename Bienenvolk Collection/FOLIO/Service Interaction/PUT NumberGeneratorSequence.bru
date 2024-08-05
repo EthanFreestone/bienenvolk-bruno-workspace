@@ -1,0 +1,48 @@
+meta {
+  name: PUT NumberGeneratorSequence
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/servint/numberGeneratorSequences/002e5008-353e-4ceb-9b47-9e27527b5820
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "id": "002e5008-353e-4ceb-9b47-9e27527b5820",
+      "outputTemplate": "P${generated_number}-${checksum}",
+      "code": "patron",
+      "owner": {
+          "id": "aaebed79-1d3c-4810-a6e0-1fa2c0f03ba7"
+      },
+      "nextValue": 1,
+      "maximumNumberThreshold": 3,
+      "format": "000000000",
+      "name": "Patron",
+      "maximumNumber": 5,
+      "maximumCheck": {
+          "id": "ff8081818c49ce7e018c49d05dda0001",
+          "value": "below_threshold",
+          "label": "Below threshold",
+          "owner": {
+              "id": "ff8081818c49ce7e018c49d05dcd0000",
+              "desc": "NumberGeneratorSequence.MaximumCheck",
+              "internal": true
+          }
+      },
+      "checkDigitAlgo": {
+          "id": "ff8081818c49ce7e018c49d05e0a0006",
+          "value": "ean13",
+          "label": "EAN13",
+          "owner": {
+              "id": "ff8081818c49ce7e018c49d05dfb0004",
+              "desc": "NumberGeneratorSequence.CheckDigitAlgo",
+              "internal": true
+          }
+      },
+      "enabled": true
+  }
+}

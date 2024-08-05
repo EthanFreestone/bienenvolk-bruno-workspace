@@ -1,0 +1,15 @@
+meta {
+  name: GET Parties
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/oa/party?stats=true
+  body: none
+  auth: none
+}
+
+params:query {
+  stats: true
+}

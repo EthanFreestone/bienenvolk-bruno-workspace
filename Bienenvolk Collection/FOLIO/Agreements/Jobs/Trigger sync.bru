@@ -1,0 +1,15 @@
+meta {
+  name: Trigger sync
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{baseUrl}}/erm/admin/triggerSync
+  body: none
+  auth: none
+}
+
+headers {
+  ~X-Okapi-Tenant: test1
+}

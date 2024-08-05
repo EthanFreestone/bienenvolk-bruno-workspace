@@ -1,0 +1,11 @@
+meta {
+  name: DELETE user dash
+  type: http
+  seq: 11
+}
+
+delete {
+  url: {{baseUrl}}/servint/dashboard/{{myDashboardId}}
+  body: text
+  auth: none
+}

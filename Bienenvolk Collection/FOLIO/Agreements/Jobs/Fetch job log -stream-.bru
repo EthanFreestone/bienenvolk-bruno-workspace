@@ -1,0 +1,17 @@
+meta {
+  name: Fetch job log -stream-
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/erm/jobs/{{latestJob}}/infoLogStream
+  body: none
+  auth: none
+}
+
+params:query {
+  ~filters: class==org.olf.general.jobs.ComparisonJob
+  ~filters: started<=1622205570
+  ~stats: true
+}

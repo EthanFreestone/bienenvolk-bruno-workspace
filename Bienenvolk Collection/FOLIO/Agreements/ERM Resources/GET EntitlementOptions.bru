@@ -1,0 +1,16 @@
+meta {
+  name: GET EntitlementOptions
+  type: http
+  seq: 14
+}
+
+get {
+  url: {{baseUrl}}/erm/resource/8e5a3ac8-7366-4ea5-8c2e-b7af43b66802/entitlementOptions?stats=true&perPage=10
+  body: text
+  auth: none
+}
+
+params:query {
+  stats: true
+  perPage: 10
+}

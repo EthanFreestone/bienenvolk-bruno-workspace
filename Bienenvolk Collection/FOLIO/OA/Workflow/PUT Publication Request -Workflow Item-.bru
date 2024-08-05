@@ -1,0 +1,50 @@
+meta {
+  name: PUT Publication Request -Workflow Item-
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{baseUrl}}/oa/publicationRequest/{{latestPublicationRequest}}
+  body: text
+  auth: none
+}
+
+body:text {
+  {
+     "localReference": "REF1"
+  }
+}
+
+script:pre-request {
+  const xOkapiTenantValue = bru.getEnvVar("x-okapi-tenant-value");
+  const okapiPort = bru.getEnvVar("okapiPort");
+  const okapiProtocol = bru.getEnvVar("okapiProtocol");
+  const okapiUrl = bru.getEnvVar("okapiUrl");
+  const username = bru.getEnvVar("username");
+  const password = bru.getEnvVar("password");
+  const baseUrl = bru.getEnvVar("baseUrl");
+  
+  const getPublicationRequests = {
+      url: `${baseUrl}/oa/publicationRequest?stats=true`,
+          header: {
+          "Content-type": "application/json",
+          "x-okapi-tenant": xOkapiTenantValue,
+          'x-okapi-token': bru.getEnvVar('x-okapi-token-value')
+      },
+      method: 'GET'
+  };
+  
+  // pm.sendRequest(getPublicationRequests, function (err, res) {
+      test('response should be okay to process', function () {
+          console.log("RES: %o", res)
+          expect(err).to.equal(null);
+          expect(res).to.have.property('code', 200);
+          expect(res).to.have.property('status', 'OK');
+      });
+      var resultsArray = res.json().results || [];
+      var newestPR = ((resultsArray)[resultsArray.length - 1] || {}).id // Doesn't actually seem to sort the requests properly *shrug*
+      bru.setEnvVar("latestPublicationRequest", newestPR)
+      console.log(err ? err : res.json());
+  });
+}

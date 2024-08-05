@@ -1,0 +1,18 @@
+meta {
+  name: GET refdata
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}/oa/refdata?perPage=100
+  body: none
+  auth: none
+}
+
+params:query {
+  perPage: 100
+  ~filters: desc=PublicationRequest.RequestStatus
+  ~filters: desc=ChecklistItem.Status
+  ~filters: desc=ChecklistItem.Outcome
+}

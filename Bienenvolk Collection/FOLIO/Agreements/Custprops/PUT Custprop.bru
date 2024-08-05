@@ -1,0 +1,19 @@
+meta {
+  name: PUT Custprop
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/erm/custprops/ff8081817f795ed6017f795faecf0002
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "primary": false,
+      "retired": true,
+      "id": "ff8081817f795ed6017f795faecf0002"
+  }
+}

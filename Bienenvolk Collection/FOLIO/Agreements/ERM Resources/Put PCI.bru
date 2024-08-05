@@ -1,0 +1,24 @@
+meta {
+  name: Put PCI
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/erm/pci/0001b6de-13d1-458a-8f4e-e532b0fde4e1
+  body: text
+  auth: none
+}
+
+params:query {
+  ~filters: eventType=REMOVE
+}
+
+body:text {
+  {
+      "coverage": [{
+          "startDate": "2022-01-02",
+          "endDate": "2023-01-01"
+      }]
+  }
+}

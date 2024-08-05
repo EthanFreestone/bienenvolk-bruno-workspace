@@ -1,0 +1,33 @@
+meta {
+  name: PUT NumberGenerator
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/servint/numberGenerators/aaebed79-1d3c-4810-a6e0-1fa2c0f03ba7
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+          "id": "aaebed79-1d3c-4810-a6e0-1fa2c0f03ba7",
+          "sequences": [
+              {
+                  "id": "002e5008-353e-4ceb-9b47-9e27527b5820",
+                  "nextValue": 12,
+                  "maximumNumberThreshold": 7,
+                  "maximumNumber": 11
+              },
+              {
+                  "id": "00a8c6d5-7d6c-4626-a6a2-fcf72f4ca78c",
+                  "nextValue": 89,
+                  "maximumNumberThreshold": 90,
+                  "maximumNumber": 100
+              }
+          ],
+          "code": "users_patronBarcode",
+          "name": "Users: Patron barcode"
+      }
+}

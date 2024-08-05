@@ -1,0 +1,16 @@
+meta {
+  name: Courses check
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://folio-testing-okapi.dev.folio.org/coursereserves/courses?limit=100&query=%28courseListing.courseTypeId%3D%3D%28%229154048b-3698-42ec-a5ca-cfcebf04e094%22%20or%20%220350e271-ddb8-4def-a6a8-a3cf4f01bbfd%22%29%20and%20courseListing.locationId%3D%3D%2253cf956f-c1df-410b-8bea-27f712cca7c0%22%29%20sortby%20name
+  body: none
+  auth: none
+}
+
+params:query {
+  limit: 100
+  query: %28courseListing.courseTypeId%3D%3D%28%229154048b-3698-42ec-a5ca-cfcebf04e094%22%20or%20%220350e271-ddb8-4def-a6a8-a3cf4f01bbfd%22%29%20and%20courseListing.locationId%3D%3D%2253cf956f-c1df-410b-8bea-27f712cca7c0%22%29%20sortby%20name
+}

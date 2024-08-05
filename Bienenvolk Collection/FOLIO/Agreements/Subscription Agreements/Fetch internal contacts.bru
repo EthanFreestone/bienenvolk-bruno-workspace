@@ -1,0 +1,18 @@
+meta {
+  name: Fetch internal contacts
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{baseUrl}}/erm/contacts?stats=true&perPage=2&sort=user&offset=4
+  body: none
+  auth: none
+}
+
+params:query {
+  stats: true
+  perPage: 2
+  sort: user
+  offset: 4
+}

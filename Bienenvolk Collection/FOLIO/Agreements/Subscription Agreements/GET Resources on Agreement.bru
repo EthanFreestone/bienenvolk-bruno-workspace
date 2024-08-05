@@ -1,0 +1,21 @@
+meta {
+  name: GET Resources on Agreement
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseUrl}}/erm/sas/{{latestAgreement}}/resources/current?perPage=10&sort=pti.titleInstance.name%3Basc&minimalView=true&stats=true
+  body: none
+  auth: none
+}
+
+params:query {
+  perPage: 10
+  sort: pti.titleInstance.name%3Basc
+  minimalView: true
+  stats: true
+  ~perPage: 100
+  ~sort: name%3asc
+  ~page: 423
+}

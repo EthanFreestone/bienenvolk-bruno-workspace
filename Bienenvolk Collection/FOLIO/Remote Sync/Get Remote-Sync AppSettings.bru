@@ -1,0 +1,15 @@
+meta {
+  name: Get Remote-Sync AppSettings
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/remote-sync/settings/appSettings
+  body: none
+  auth: none
+}
+
+params:query {
+  ~filters: section=Testing
+}

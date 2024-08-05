@@ -1,0 +1,20 @@
+meta {
+  name: GET Works
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{baseUrl}}/oa/works
+  body: none
+  auth: none
+}
+
+params:query {
+  ~filters: id!=4e59b3df-7d5c-4566-aa3e-798385bcd534
+  ~match: name
+  ~match: alternateNames.name
+  ~match: description
+  ~sort: agreementStatus.label;asc
+  ~includes: ["desc"]
+}

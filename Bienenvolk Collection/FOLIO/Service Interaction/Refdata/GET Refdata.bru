@@ -1,0 +1,16 @@
+meta {
+  name: GET Refdata
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/servint/refdata?filters=desc==NumberGeneratorSequence.MaximumCheck
+  body: none
+  auth: none
+}
+
+params:query {
+  filters: desc==NumberGeneratorSequence.MaximumCheck
+  ~stats: true
+}

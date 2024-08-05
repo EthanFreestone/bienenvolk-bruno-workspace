@@ -1,0 +1,15 @@
+meta {
+  name: DELETE widget instance
+  type: http
+  seq: 16
+}
+
+delete {
+  url: {{baseUrl}}/servint/widgets/instances/53b2f7f9-2167-4158-af2a-75bb0d735a64
+  body: none
+  auth: none
+}
+
+params:query {
+  ~filters: id!=4e59b3df-7d5c-4566-aa3e-798385bcd534
+}

@@ -1,0 +1,17 @@
+meta {
+  name: GET Number generator Sequences
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/servint/numberGeneratorSequences?filters=code=patron
+  body: none
+  auth: none
+}
+
+params:query {
+  filters: code=patron
+  ~stats: true
+  ~filters: owner.id=68071900-dbde-4686-b328-de36ebdadca7
+}

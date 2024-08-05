@@ -1,0 +1,19 @@
+meta {
+  name: PUT String Template
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{baseUrl}}/erm/sts/{{latestStringTemplate}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "name": "Test",
+      "rule": "test--{{inputUrl}}"
+      //"idScopes": [{{platform2}}]
+  }
+}

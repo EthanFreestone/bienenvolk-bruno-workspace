@@ -1,0 +1,15 @@
+meta {
+  name: GET Configurations entries
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/configurations/entries?query=(module=AGREEMENTS and configName=general)
+  body: none
+  auth: none
+}
+
+params:query {
+  query: (module=AGREEMENTS and configName=general)
+}

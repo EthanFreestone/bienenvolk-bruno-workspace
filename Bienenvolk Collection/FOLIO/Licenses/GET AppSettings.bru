@@ -1,0 +1,19 @@
+meta {
+  name: GET AppSettings
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{baseUrl}}/licenses/settings/appSettings
+  body: none
+  auth: none
+}
+
+params:query {
+  ~filters: id!=4e59b3df-7d5c-4566-aa3e-798385bcd534
+  ~match: name
+  ~match: alternateNames.name
+  ~match: description
+  ~sort: agreementStatus.label;asc
+}

@@ -1,0 +1,31 @@
+meta {
+  name: PUT Refdata
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{baseUrl}}/servint/refdata/ff8081818c49acf7018c49ad3cde0004
+  body: json
+  auth: none
+}
+
+params:query {
+  ~stats: true
+}
+
+body:json {
+  {
+          "id": "ff8081818c496caf018c496d486b0004",
+          "desc": "NumberGeneratorSequence.CheckDigitAlgo",
+          "internal": false,
+          "values": [
+              {
+                  "id": "ff8081818c49acf7018c49ad3cfb0006",
+                  "value": "ean13",
+                  "label": "EAN13",
+                  "_delete": true
+              }
+          ]
+      }
+}

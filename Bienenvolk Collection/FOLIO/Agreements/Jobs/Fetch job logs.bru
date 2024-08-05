@@ -1,0 +1,19 @@
+meta {
+  name: Fetch job logs
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/erm/jobs/{{latestJob}}/infoLog?page=37&perPage=100&stats=true
+  body: none
+  auth: none
+}
+
+params:query {
+  page: 37
+  perPage: 100
+  stats: true
+  ~filters: class==org.olf.general.jobs.ComparisonJob
+  ~filters: started<=1622205570
+}

@@ -1,0 +1,19 @@
+meta {
+  name: GET Terms
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/licenses/custprops
+  body: none
+  auth: none
+}
+
+params:query {
+  ~filters: id!=4e59b3df-7d5c-4566-aa3e-798385bcd534
+  ~match: name
+  ~match: alternateNames.name
+  ~match: description
+  ~sort: agreementStatus.label;asc
+}

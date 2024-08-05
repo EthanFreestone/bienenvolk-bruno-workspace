@@ -1,0 +1,19 @@
+meta {
+  name: GET Linked agreements
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseUrl}}/licenses/licenses/4991cf06-eda3-4ff9-9c9b-3c7589e00005/linkedAgreements
+  body: none
+  auth: none
+}
+
+params:query {
+  ~filters: id!=4e59b3df-7d5c-4566-aa3e-798385bcd534
+  ~match: name
+  ~match: alternateNames.name
+  ~match: description
+  ~sort: agreementStatus.label;asc
+}

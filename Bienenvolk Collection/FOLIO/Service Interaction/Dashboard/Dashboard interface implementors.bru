@@ -1,0 +1,15 @@
+meta {
+  name: Dashboard interface implementors
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{baseUrl}}/_/proxy/tenants/{{x-okapi-tenant-value}}/modules?provide=dashboard
+  body: none
+  auth: none
+}
+
+params:query {
+  provide: dashboard
+}

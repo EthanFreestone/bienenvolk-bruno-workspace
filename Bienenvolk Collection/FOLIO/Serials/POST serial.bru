@@ -1,0 +1,37 @@
+meta {
+  name: POST serial
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/serials-management/serials
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "serialStatus": {
+          "value": "active"
+      },
+      "orderLine": {
+          "remoteId": "b215dd2c-fe64-4a9f-9d16-7f01db137df3",
+          "title": "Rollover",
+          "titleId": "1371d57a-56a7-4c89-a317-2a82bf2ed72e"
+      },
+      "title": {
+          "id": "1371d57a-56a7-4c89-a317-2a82bf2ed72e",
+          "title": "Rollover",
+          "poLineId": "b215dd2c-fe64-4a9f-9d16-7f01db137df3",
+          "productIds": [],
+          "contributors": [],
+          "poLineNumber": "10005-1",
+          "subscriptionInterval": 0,
+          "claimingActive": false,
+          "claimingInterval": 45,
+          "isAcknowledged": false,
+          "acqUnitIds": []
+      }
+  }
+}

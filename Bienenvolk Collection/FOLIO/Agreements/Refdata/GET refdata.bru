@@ -1,0 +1,25 @@
+meta {
+  name: GET refdata
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/erm/refdata?max=100&stats=true
+  body: none
+  auth: none
+}
+
+params:query {
+  max: 100
+  stats: true
+  ~filters: desc==TitleInstance.Type
+  ~match: name
+  ~match: alternateNames.name
+  ~match: description
+  ~sort: desc;asc
+}
+
+headers {
+  X-Okapi-Tenant: test1
+}

@@ -1,0 +1,16 @@
+meta {
+  name: GET Number generator sequences
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseUrl}}/servint/numberGenerators?filters=code=users_patronBarcode
+  body: none
+  auth: none
+}
+
+params:query {
+  filters: code=users_patronBarcode
+  ~stats: true
+}

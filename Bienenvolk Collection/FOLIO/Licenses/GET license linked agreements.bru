@@ -1,0 +1,15 @@
+meta {
+  name: GET license linked agreements
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/licenses/licenses/108e9eb3-dac1-4202-b666-ec8e269a510d/linkedAgreements
+  body: none
+  auth: none
+}
+
+headers {
+  ~Cookie: folioAccessToken=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInVzZXJfaWQiOiI5MmJhYzU0ZC00ZTc5LTQ5MmYtYTkwMy1mNDZhZWQzODA3ZTUiLCJ0eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5OTU4NDQyLCJpYXQiOjE2OTk5NTc4NDIsInRlbmFudCI6InRlc3QxIn0.I17Hb80BMcNW605FyPUxeX3kuQy5tFHK30XbZuSbmrM; Path=/; Secure; HttpOnly; Expires=Tue, 14 Nov 2023 10:40:43 GMT;
+}

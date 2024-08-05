@@ -1,0 +1,85 @@
+meta {
+  name: POST Job -Package Import 2-
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseUrl}}/erm/jobs/packageImport
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "name": "Job test 2",
+      "payload": {
+          "header": {
+              "dataSchema": {
+                  "name": "mod-agreements-package",
+                  "version": "2.0"
+              }
+          },
+          "records": [
+              {
+                  "source": "KINT",
+                  "reference": "repeat-identifiers-example-dispositio-n",
+                  "name": "repeat-identifiers-example-dispositio-n",
+                  "packageProvider": {
+                      "name": "KINT"
+                  },
+                  "sourceTitleCount": 1,
+                  "identifiers": [
+                      {
+                          "namespace": "gokb_uuid",
+                          "value": "be3df853-879e-4f80-af26-d835808bf0f2"
+                      }
+                  ],
+                  "contentItems": [
+                      {
+                          "sourceIdentifier": "853d100c-703a-4fb4-9eca-9681888e8a45",
+                          "sourceIdentifierNamespace": "gokb",
+                          "depth": "fulltext",
+                          "accessStart": "2011-01-01",
+                          "accessEnd": "2025-06-30",
+                          "coverage": [
+                              {
+                                  "startDate": "2018-04-01",
+                                  "startVolume": "1",
+                                  "startIssue": "1"
+                              }
+                          ],
+                          "platformTitleInstance": {
+                              "platform": "JSTOR",
+                              "platform_url": "https://www.jstor.org",
+                              "url": "https://www.jstor.org/action/showPublication?journalCode=dispositio",
+                              "titleInstance": {
+                                  "name": "Dispositio-n",
+                                  "identifiers": [
+                                      {
+                                          "value": "853d100c-703a-4fb4-9eca-9681888e8a45",
+                                          "namespace": "gokb_uuid"
+                                      },
+                                      {
+                                          "value": "0734-0591",
+                                          "namespace": "issn"
+                                      },
+                                      {
+                                          "value": "0734-05918",
+                                          "namespace": "eissn"
+                                      },
+                                      {
+                                          "value": "2694468-6",
+                                          "namespace": "zbd"
+                                      }
+                                  ],
+                                  "type": "serial"
+                              }
+                          }
+                      }
+                  ]
+              }
+          ]
+      }
+  }
+}

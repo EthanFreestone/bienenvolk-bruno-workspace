@@ -1,0 +1,15 @@
+meta {
+  name: fetch widget instances
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{baseUrl}}/servint/widgets/instances
+  body: none
+  auth: none
+}
+
+params:query {
+  ~filters: id!=4e59b3df-7d5c-4566-aa3e-798385bcd534
+}

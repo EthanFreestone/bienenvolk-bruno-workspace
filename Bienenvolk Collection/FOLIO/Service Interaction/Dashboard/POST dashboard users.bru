@@ -1,0 +1,35 @@
+meta {
+  name: POST dashboard users
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/servint/dashboard/{{myDashboardId}}/users
+  body: text
+  auth: none
+}
+
+params:query {
+  ~filters: id!=4e59b3df-7d5c-4566-aa3e-798385bcd534
+  ~stats: true
+}
+
+body:text {
+  [
+      {
+          "id": {{myDashboardAccessId}},
+          "access": "manage",
+          "user": {
+              "id": {{myUserId}}
+          }
+      },
+      {
+          "id": "c7167812-d1be-4df3-8547-a242f1313487",
+          "access": "view",
+          "user": {
+              "id": "3cca635b-d3fa-4272-af24-485ba80d715f"
+          }
+      }
+  ]
+}

@@ -1,0 +1,21 @@
+meta {
+  name: Inventory Check
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://folio-testing-okapi.dev.folio.org/inventory/instances?limit=100&query=item.effectiveLocationId=="fcd64ce1-6995-48f0-840e-89ffa2288371"&query=cql.allRecords=1 NOT staffSuppress=="true"&query=metadata.createdDate>="1970-01-01"&query=metadata.createdDate<="2100-01-02"&sortby=title
+  body: none
+  auth: none
+}
+
+params:query {
+  limit: 100
+  query: item.effectiveLocationId=="fcd64ce1-6995-48f0-840e-89ffa2288371"
+  query: cql.allRecords=1 NOT staffSuppress=="true"
+  query: metadata.createdDate>="1970-01-01"
+  query: metadata.createdDate<="2100-01-02"
+  sortby: title
+  ~query: staffSuppress=="false"
+}

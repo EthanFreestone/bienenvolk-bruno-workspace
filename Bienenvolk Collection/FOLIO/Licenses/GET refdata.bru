@@ -1,0 +1,20 @@
+meta {
+  name: GET refdata
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/licenses/refdata?stats=true
+  body: none
+  auth: none
+}
+
+params:query {
+  stats: true
+  ~filters: id!=4e59b3df-7d5c-4566-aa3e-798385bcd534
+  ~match: name
+  ~match: alternateNames.name
+  ~match: description
+  ~sort: agreementStatus.label;asc
+}

@@ -1,0 +1,16 @@
+meta {
+  name: GET all dashboard definitions
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{baseUrl}}/servint/widgets/definitions/global
+  body: text
+  auth: none
+}
+
+params:query {
+  ~name: ERM Agreements
+  ~version: 1.4
+}

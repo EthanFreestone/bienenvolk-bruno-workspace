@@ -1,0 +1,20 @@
+meta {
+  name: POST generate predicted pieces
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseUrl}}/serials-management/predictedPieces/create
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "startDate": "2024-01-01",
+      // This will assume starting value of 1 for all labels because there's no neat way to glue startingValues in with current API
+      {{latestRuleset}}
+  }
+  
+}

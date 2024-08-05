@@ -1,0 +1,20 @@
+meta {
+  name: GET Dashboard Access
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}/servint/dashboard/{{myDashboardId}}/my-access
+  body: text
+  auth: none
+}
+
+body:text {
+  {
+      "name": "test",
+      "owner": {
+          "id": "c90c9b11-86f0-5f4b-817e-cfa1322330bb"
+      }
+  }
+}

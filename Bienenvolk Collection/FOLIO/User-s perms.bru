@@ -1,0 +1,15 @@
+meta {
+  name: User-s perms
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/perms/users/{{myUserId}}?indexField=userId
+  body: none
+  auth: none
+}
+
+params:query {
+  indexField: userId
+}

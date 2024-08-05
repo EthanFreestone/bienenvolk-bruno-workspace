@@ -1,0 +1,16 @@
+meta {
+  name: PermGroup permissions
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/perms/permissions?length=10000&query=permissionName==general.users
+  body: none
+  auth: none
+}
+
+params:query {
+  length: 10000
+  query: permissionName==general.users
+}

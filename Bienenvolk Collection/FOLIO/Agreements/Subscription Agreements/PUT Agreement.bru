@@ -1,0 +1,23 @@
+meta {
+  name: PUT Agreement
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/erm/sas/01263181-53e5-439a-82c7-e9a6d1557207
+  body: text
+  auth: none
+}
+
+params:query {
+  ~offset: 3
+  ~perPage: 3
+  ~filters: orgs.roles.role.value=content_provider
+}
+
+body:text {
+  {
+      "description": "Testing 1"
+  }
+}

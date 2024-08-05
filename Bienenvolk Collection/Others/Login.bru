@@ -1,0 +1,28 @@
+meta {
+  name: Login
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/bl-users/login-with-expiry
+  body: json
+  auth: none
+}
+
+params:query {
+  ~expandPermissions: true
+  ~fullPermissions: true
+}
+
+headers {
+  X-Okapi-Tenant: {{x-okapi-tenant-value}}
+}
+
+body:json {
+  {
+      "username": "{{username}}",
+      "password": "{{password}}",
+      "passwordIgnore": "Wrong pass"
+  }
+}

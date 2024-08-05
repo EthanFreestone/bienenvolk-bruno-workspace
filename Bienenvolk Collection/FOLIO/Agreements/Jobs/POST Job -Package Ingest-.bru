@@ -1,0 +1,17 @@
+meta {
+  name: POST Job -Package Ingest-
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/erm/jobs/packageIngest
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "name": "Job test 1"
+  }
+}

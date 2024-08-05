@@ -1,0 +1,18 @@
+meta {
+  name: GET AgreementLines
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/erm/entitlements?filters=owner.id==05f74be5-fa09-45ab-af61-a25634032c2a&sort=name;asc&stats=true&perPage=100
+  body: none
+  auth: none
+}
+
+params:query {
+  filters: owner.id==05f74be5-fa09-45ab-af61-a25634032c2a
+  sort: name;asc
+  stats: true
+  perPage: 100
+}

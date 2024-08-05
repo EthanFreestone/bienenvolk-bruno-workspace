@@ -1,0 +1,17 @@
+meta {
+  name: Local Health Check
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:{{localPort}}/admin/health
+  body: none
+  auth: none
+}
+
+script:pre-request {
+  const port = "8081"
+  
+  bru.setEnvVar("localPort", port);
+}

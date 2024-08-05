@@ -1,0 +1,16 @@
+meta {
+  name: GET Platforms
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{baseUrl}}/erm/platforms?stats=true&perPage=25
+  body: text
+  auth: none
+}
+
+params:query {
+  stats: true
+  perPage: 25
+}

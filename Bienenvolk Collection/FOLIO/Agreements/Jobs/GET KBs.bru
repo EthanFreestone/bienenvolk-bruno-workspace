@@ -1,0 +1,20 @@
+meta {
+  name: GET KBs
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{baseUrl}}/erm/kbs
+  body: none
+  auth: none
+}
+
+params:query {
+  ~expand: items
+  ~stats: true
+}
+
+headers {
+  ~X-Okapi-Tenant: test1
+}

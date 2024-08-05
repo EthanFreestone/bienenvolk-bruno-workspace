@@ -1,0 +1,29 @@
+meta {
+  name: PUT AppSetting
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{baseUrl}}/erm/settings/appSettings/ff80818190ea4ac20190ea4cf2980053
+  body: json
+  auth: none
+}
+
+params:query {
+  ~filters: id!=4e59b3df-7d5c-4566-aa3e-798385bcd534
+  ~match: name
+  ~match: alternateNames.name
+  ~match: description
+  ~sort: agreementStatus.label;asc
+}
+
+body:json {
+   {
+      "id": "ff80818190ea4ac20190ea4cf2980053",
+      "section": "fileStorage",
+      "value": "S3_SECRET_VAR",
+      "settingType": "String",
+      "key": "S3SecretVar"
+  },
+}

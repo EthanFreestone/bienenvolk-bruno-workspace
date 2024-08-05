@@ -1,0 +1,23 @@
+meta {
+  name: GET Jobs
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/erm/jobs
+  body: none
+  auth: none
+}
+
+params:query {
+  ~filters: class==org.olf.general.jobs.ComparisonJob
+  ~filters: started<=1622205570
+  ~sort: started;asc
+  ~filters: status.value!=ended
+  ~filters: result isNull || result.value!=failure
+}
+
+headers {
+  ~X-Okapi-Tenant: test7
+}

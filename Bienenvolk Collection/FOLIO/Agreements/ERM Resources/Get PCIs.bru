@@ -1,0 +1,24 @@
+meta {
+  name: Get PCIs
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/erm/pci?stats=true
+  body: text
+  auth: none
+}
+
+params:query {
+  stats: true
+  ~sort: pti.titleInstance.name
+  ~sort: note
+  ~sort: depth;desc
+  ~sort: pti.titleInstance.name%2C%20note%2C%20depth;desc
+  ~filters: pti.titleInstance.name=Wibble Test 1
+  ~filters: pti.titleInstance.id=dc040b07-631a-45de-99b8-008e8c48c8c9
+  ~filters: pti.platform.id=={{platform1}}%7C%7Cpti.platform.id=={{platform2}}%7C%7Cpti.platform.id=={{platform3}}
+  ~filters: pti.platform.id!={{platform1}}%26%26pti.platform.id!={{platform2}}%26%26pti.platform.id!={{platform3}}
+  ~perPage: 10
+}

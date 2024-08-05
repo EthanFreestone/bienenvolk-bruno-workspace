@@ -1,0 +1,15 @@
+meta {
+  name: DELETE String Template
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/erm/sts/{{latestStringTemplate}}
+  body: json
+  auth: none
+}
+
+headers {
+  ~X-Okapi-Tenant: test5
+}

@@ -1,0 +1,21 @@
+meta {
+  name: Get PCI
+  type: http
+  seq: 12
+}
+
+get {
+  url: {{baseUrl}}/erm/pci?stats=true
+  body: text
+  auth: none
+}
+
+params:query {
+  stats: true
+  ~sort: pti.titleInstance.name
+  ~sort: note
+  ~sort: depth;desc
+  ~sort: pti.titleInstance.name%2C%20note%2C%20depth;desc
+  ~filters: pti.titleInstance.id=754f9a6d-1e80-45d3-8da2-cd025a3ec598
+  ~filters: pti.titleInstance.id=dc040b07-631a-45de-99b8-008e8c48c8c9
+}

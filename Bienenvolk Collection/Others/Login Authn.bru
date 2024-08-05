@@ -1,0 +1,29 @@
+meta {
+  name: Login Authn
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/authn/login-with-expiry
+  body: json
+  auth: none
+}
+
+params:query {
+  ~expandPermissions: true
+  ~fullPermissions: true
+}
+
+headers {
+  X-Okapi-Tenant: {{x-okapi-tenant-value}}
+}
+
+body:json {
+  {
+      "usernameIgnore": "wrongUser",
+      "username": "{{username}}",
+      "password": "{{password}}",
+      "passwordIgnore": "Wrong pass"
+  }
+}

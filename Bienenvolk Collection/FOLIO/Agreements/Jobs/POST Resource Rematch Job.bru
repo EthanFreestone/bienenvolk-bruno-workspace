@@ -1,0 +1,20 @@
+meta {
+  name: POST Resource Rematch Job
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/erm/jobs/resourceRematch
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "payload": [
+         "91dcceda-5f68-445d-8732-dc63cc85a1a5",
+         "5fe0b8a4-3810-43f4-9e38-b5ecae05590f"
+      ]
+  }
+}

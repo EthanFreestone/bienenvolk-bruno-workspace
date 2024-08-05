@@ -1,0 +1,17 @@
+meta {
+  name: POST user dash
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/servint/dashboard
+  body: text
+  auth: none
+}
+
+body:text {
+  {
+      "name": "Ethan test dashboard"
+  }
+}

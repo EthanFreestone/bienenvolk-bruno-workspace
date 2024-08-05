@@ -1,0 +1,26 @@
+meta {
+  name: PUT Party
+  type: http
+  seq: 7
+}
+
+put {
+  url: {{baseUrl}}/oa/party/b96b2d33-2267-4e3c-8b0f-cae5f60ee518
+  body: text
+  auth: none
+}
+
+body:text {
+  {
+      "streetAddress": {
+          "address": {
+              "name": "Amy's house",
+              "addressLineOne": "124 doctor lane",
+              "city": "Leadworth",
+              "region": "Gloucestershire",
+              "country": "England",
+              "postalCode": "GL1-5DW"
+          }
+      }
+  }
+}

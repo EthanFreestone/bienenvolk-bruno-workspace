@@ -1,0 +1,16 @@
+meta {
+  name: Generate Number
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/servint/numberGenerators/getNextNumber?generator=users_patronBarcode&sequence=staff
+  body: none
+  auth: none
+}
+
+params:query {
+  generator: users_patronBarcode
+  sequence: staff
+}

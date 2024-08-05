@@ -1,0 +1,22 @@
+meta {
+  name: POST External AgreementLine
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/erm/entitlements
+  body: text
+  auth: none
+}
+
+body:text {
+  {
+      "type": "external",
+      "authority": "12345",
+      "reference": "abcde",
+      "owner": {
+          "id": "05f74be5-fa09-45ab-af61-a25634032c2a"
+      }
+  }
+}

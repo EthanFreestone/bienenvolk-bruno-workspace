@@ -1,0 +1,11 @@
+meta {
+  name: GET pushKB chunk info logs
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/erm/pushKB/chunks/1f15f7c0-028e-4e27-b93b-8424127b257b/infoLog
+  body: json
+  auth: none
+}

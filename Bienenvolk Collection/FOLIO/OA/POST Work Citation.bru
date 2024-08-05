@@ -1,0 +1,40 @@
+meta {
+  name: POST Work Citation
+  type: http
+  seq: 14
+}
+
+post {
+  url: {{baseUrl}}/oa/works/citation
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "title": "Some made up journal 12",
+      "type":"serial",
+      "indexedInDOAJ": "yes",
+      "oaStatus": "gold",
+      "instances":[
+          {
+              "ids":[
+                  {
+                      "ns":"issn",
+                      "id":"56434576"
+                  }
+              ],
+              "subType":"electronic"
+          },
+          {
+              "ids":[
+                  {
+                      "ns":"issn",
+                      "id":"2365546"
+                  }
+              ],
+              "subType":"print"
+          }
+      ]
+  }
+}

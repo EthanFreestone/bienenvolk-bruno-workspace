@@ -1,0 +1,21 @@
+meta {
+  name: GET refdata values
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/serials-management/refdata
+  body: none
+  auth: none
+}
+
+params:query {
+  ~filters: desc==SubscriptionAgreement.AgreementStatus%7C%7Cdesc==SubscriptionAgreement.ReasonForClosure%7C%7Cdesc==LicenseAmendmentStatus.Status%7C%7Cdesc==InternalContact.Role%7C%7Cdesc==DocumentAttachment.AtType%7C%7Cdesc==Global.Yes_No%7C%7Cdesc==RemoteLicenseLink.Status%7C%7Cdesc==SubscriptionAgreementOrg.Role%7C%7Cdesc==SubscriptionAgreement.RenewalPriority%7C%7Cdesc==AgreementRelationship.Type
+  ~match: name
+  ~match: alternateNames.name
+  ~match: description
+  ~sort: desc;asc
+  ~max: 100
+  ~stats: true
+}

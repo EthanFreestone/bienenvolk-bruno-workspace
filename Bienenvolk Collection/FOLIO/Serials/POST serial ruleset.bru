@@ -1,0 +1,88 @@
+meta {
+  name: POST serial ruleset
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/serials-management/rulesets
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "rulesetStatus": {
+          "value": "active"
+      },
+      "recurrence": {
+          "timeUnit": {
+              "value": "day"
+          },
+          "period": "1",
+          "issues": "1",
+          "rules": [
+              {
+                  "ordinal": "1",
+                  "pattern": {},
+                  "patternType": "day"
+              }
+          ]
+      },
+      "templateConfig": {
+          "rules": [
+              {
+                  "templateMetadataRuleType": "chronology",
+                  "ruleType": {
+                      "templateMetadataRuleFormat": "chronology_year",
+                      "ruleFormat": {
+                          "yearFormat": {
+                              "value": "full"
+                          }
+                      }
+                  },
+                  "index": 0
+              },
+              {
+                  "templateMetadataRuleType": "enumeration",
+                  "ruleType": {
+                      "templateMetadataRuleFormat": "enumeration_numeric",
+                      "ruleFormat": {
+                          "levels": [
+                              {
+                                  "units": "1",
+                                  "format": {
+                                      "value": "number"
+                                  },
+                                  "sequence": {
+                                      "value": "continuous"
+                                  },
+                                  "internalNote": "Vol",
+                                  "startingValue": "1",
+                                  "index": 0
+                              },
+                              {
+                                  "units": "12",
+                                  "format": {
+                                      "value": "number"
+                                  },
+                                  "sequence": {
+                                      "value": "reset"
+                                  },
+                                  "internalNote": "Issue",
+                                  "startingValue": "1",
+                                  "index": 1
+                              }
+                          ]
+                      }
+                  },
+                  "index": 1
+              }
+          ],
+          "templateString": "V: {{enumeration1.level1}}. I: {{enumeration1.level2}}. {{chronology1.year}}"
+      },
+      "owner": {
+          "id": {{latestSerial}}
+      }
+  }
+}

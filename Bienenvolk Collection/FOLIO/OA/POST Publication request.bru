@@ -1,0 +1,21 @@
+meta {
+  name: POST Publication request
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/oa/publicationRequest
+  body: text
+  auth: none
+}
+
+body:text {
+  {
+      "requestDate": "2022-07-13",
+      "requestStatus": {
+          "id": "ff80818181f7b6aa0181f7bcba5d0046"
+      },
+      "requestNumber": "123"
+  }
+}

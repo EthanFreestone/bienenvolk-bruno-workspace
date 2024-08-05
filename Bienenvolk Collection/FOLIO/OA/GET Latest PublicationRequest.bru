@@ -1,0 +1,21 @@
+meta {
+  name: GET Latest PublicationRequest
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{baseUrl}}/oa/publicationRequest?filters=id={{latestPublicationRequest}}&stats=true
+  body: none
+  auth: none
+}
+
+params:query {
+  filters: id={{latestPublicationRequest}}
+  stats: true
+  ~match: name
+  ~match: alternateNames.name
+  ~match: description
+  ~sort: agreementStatus.label;asc
+  ~includes: ["desc"]
+}

@@ -1,0 +1,18 @@
+meta {
+  name: SAS PublicLookup
+  type: http
+  seq: 12
+}
+
+get {
+  url: {{baseUrl}}/erm/sas/publicLookup?referenceId=298-1699-1191285
+  body: none
+  auth: none
+}
+
+params:query {
+  referenceId: 298-1699-1191285
+  ~stats: true
+  ~perPage: 3
+  ~fetchExternalResources: true
+}

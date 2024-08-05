@@ -1,0 +1,15 @@
+meta {
+  name: GET eHoldings package
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/eholdings/packages/19-2536?include=package
+  body: none
+  auth: none
+}
+
+params:query {
+  include: package
+}

@@ -1,0 +1,16 @@
+meta {
+  name: Get EntitlementLogEntries
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/erm/entitlementLogEntry?stats=true
+  body: none
+  auth: none
+}
+
+params:query {
+  stats: true
+  ~filters: eventType=REMOVE
+}

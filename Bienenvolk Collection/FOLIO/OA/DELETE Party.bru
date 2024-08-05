@@ -1,0 +1,23 @@
+meta {
+  name: DELETE Party
+  type: http
+  seq: 8
+}
+
+delete {
+  url: {{baseUrl}}/oa/party/2c630889-188e-4bc3-9289-60dc06919a59
+  body: text
+  auth: none
+}
+
+body:text {
+  {
+      "phone": "07987654321",
+      "mobile": "07987654321",
+      "title": "Mr",
+      "orcidId": "456",
+      "mainEmail": "c@d.com",
+      "givenNames": "John",
+      "familyName": "Smith"
+  }
+}

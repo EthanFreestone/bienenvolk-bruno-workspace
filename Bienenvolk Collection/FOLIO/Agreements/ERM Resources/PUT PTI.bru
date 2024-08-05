@@ -1,0 +1,21 @@
+meta {
+  name: PUT PTI
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/erm/pti/<id>
+  body: text
+  auth: none
+}
+
+params:query {
+  ~stats: true
+}
+
+body:text {
+  {
+      "suppressFromDiscovery": true
+  }
+}

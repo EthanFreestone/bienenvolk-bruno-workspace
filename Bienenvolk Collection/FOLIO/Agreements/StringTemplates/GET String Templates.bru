@@ -1,0 +1,19 @@
+meta {
+  name: GET String Templates
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/erm/sts?stats=true
+  body: json
+  auth: none
+}
+
+params:query {
+  stats: true
+}
+
+headers {
+  ~X-Okapi-Tenant: test5
+}

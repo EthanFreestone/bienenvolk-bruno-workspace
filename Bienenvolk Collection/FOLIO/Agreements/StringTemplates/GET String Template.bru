@@ -1,0 +1,11 @@
+meta {
+  name: GET String Template
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/erm/sts/{{latestStringTemplate}}
+  body: json
+  auth: none
+}

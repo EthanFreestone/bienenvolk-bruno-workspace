@@ -1,0 +1,18 @@
+meta {
+  name: PUT Dashboard
+  type: http
+  seq: 10
+}
+
+put {
+  url: {{baseUrl}}/servint/dashboard/ca0c219f-50c9-42e2-ab2b-97893ffcd18b
+  body: text
+  auth: none
+}
+
+body:text {
+  {
+      "id": "ca0c219f-50c9-42e2-ab2b-97893ffcd18b",
+      "name": "test"
+  }
+}

@@ -1,0 +1,15 @@
+meta {
+  name: Interfaces
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/organizations-storage/interfaces?limit=100
+  body: none
+  auth: none
+}
+
+params:query {
+  limit: 100
+}

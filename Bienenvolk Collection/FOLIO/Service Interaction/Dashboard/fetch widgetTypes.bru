@@ -1,0 +1,25 @@
+meta {
+  name: fetch widgetTypes
+  type: http
+  seq: 14
+}
+
+get {
+  url: {{baseUrl}}/servint/widgets/types
+  body: text
+  auth: none
+}
+
+params:query {
+  ~filters: name=SimpleSearch
+  ~version: 1.0
+}
+
+body:text {
+  {
+      "name": "test",
+      "owner": {
+          "id": "c90c9b11-86f0-5f4b-817e-cfa1322330bb"
+      }
+  }
+}

@@ -1,0 +1,51 @@
+meta {
+  name: Fetch job log -stream with bearer auth-
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/erm/jobs/d1d01f00-c6c3-4d73-8c1c-29becba83c53/errorLogStream
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~filters: class==org.olf.general.jobs.ComparisonJob
+  ~filters: started<=1622205570
+}
+
+auth:bearer {
+  token: {{x-okapi-token-value}}
+}
+
+script:pre-request {
+  const xOkapiTenantValue = bru.getEnvVar("x-okapi-tenant-value");
+  const okapiPort = bru.getEnvVar("okapiPort");
+  const okapiProtocol = bru.getEnvVar("okapiProtocol");
+  const okapiUrl = bru.getEnvVar("okapiUrl");
+  const username = bru.getEnvVar("username");
+  const password = bru.getEnvVar("password");
+  const baseUrl = bru.getEnvVar("baseUrl");
+  
+  const getPackageIngestJobs = {
+      url: `${baseUrl}/erm/jobs?filters=class=org.olf.general.jobs.PackageIngestJob`,
+          header: {
+          "Content-type": "application/json",
+          "x-okapi-tenant": xOkapiTenantValue,
+          'x-okapi-token': bru.getEnvVar('x-okapi-token-value')
+      },
+      method: 'GET'
+  };
+  
+  // pm.sendRequest(getPackageIngestJobs, function (err, res) {
+      test('response should be okay to process', function () {
+          expect(err).to.equal(null);
+          expect(res).to.have.property('code', 200);
+          expect(res).to.have.property('status', 'OK');
+      });
+      var newestJob = ((res.json().results || [])[0] || {}).id
+      bru.setEnvVar("latestJob", newestJob)
+      console.log(err ? err : res.json());
+  });
+}

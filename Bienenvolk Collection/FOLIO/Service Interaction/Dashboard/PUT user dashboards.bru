@@ -1,0 +1,95 @@
+meta {
+  name: PUT user dashboards
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{baseUrl}}/servint/dashboard/my-dashboards?sort=defaultUserDashboard;desc&sort=userDashboardWeight;asc&sort=dateCreated;desc
+  body: text
+  auth: none
+}
+
+params:query {
+  sort: defaultUserDashboard;desc
+  sort: userDashboardWeight;asc
+  sort: dateCreated;desc
+  ~filters: id!=4e59b3df-7d5c-4566-aa3e-798385bcd534
+}
+
+body:text {
+  [
+      {
+          "id": "1dc5f700-4785-43f9-ba6b-73eb564efc7e",
+          "access": {
+              "id": "01db2dc6fd13a8e1572bedaf1998b6e1",
+              "value": "manage",
+              "label": "Manage",
+              "owner": {
+                  "id": "2fa874ccb930842a3abb7e7a432b45f8",
+                  "desc": "DashboardAccess.Access",
+                  "internal": true
+              }
+          },
+          "dateCreated": "2022-08-22T15:58:17Z",
+          "userDashboardWeight": 15,
+          "user": {
+              "id": "246d5b6c-7772-5077-820d-54f90c23094e"
+          },
+          "defaultUserDashboard": false,
+          "dashboard": {
+              "id": "abfb1a38-75c0-415d-9e98-aaa73e4ed53b",
+              "name": "My dashboard",
+              "widgets": []
+          }
+      },
+      {
+          "id": "d2ec018c-5e63-4ec0-9abb-e2e3c8eaf48a",
+          "access": {
+              "id": "01db2dc6fd13a8e1572bedaf1998b6e1",
+              "value": "manage",
+              "label": "Manage",
+              "owner": {
+                  "id": "2fa874ccb930842a3abb7e7a432b45f8",
+                  "desc": "DashboardAccess.Access",
+                  "internal": true
+              }
+          },
+          "dateCreated": "2022-08-22T15:58:32Z",
+          "userDashboardWeight": 10,
+          "user": {
+              "id": "246d5b6c-7772-5077-820d-54f90c23094e"
+          },
+          "defaultUserDashboard": true,
+          "dashboard": {
+              "id": "c34e481a-6a5f-4d2d-a0fc-f98b74b283e2",
+              "name": "Ethan test dashboard",
+              "widgets": []
+          }
+      },
+      {
+          "id": "e68466bd-f3fb-4e92-a3b4-e36542e11f31",
+          "access": {
+              "id": "01db2dc6fd13a8e1572bedaf1998b6e1",
+              "value": "manage",
+              "label": "Manage",
+              "owner": {
+                  "id": "2fa874ccb930842a3abb7e7a432b45f8",
+                  "desc": "DashboardAccess.Access",
+                  "internal": true
+              }
+          },
+          "dateCreated": "2022-08-22T16:01:00Z",
+          "userDashboardWeight": 13,
+          "user": {
+              "id": "246d5b6c-7772-5077-820d-54f90c23094e"
+          },
+          "defaultUserDashboard": false,
+          "dashboard": {
+              "id": "ca0c219f-50c9-42e2-ab2b-97893ffcd18b",
+              "name": "test",
+              "widgets": []
+          }
+      }
+  ]
+}

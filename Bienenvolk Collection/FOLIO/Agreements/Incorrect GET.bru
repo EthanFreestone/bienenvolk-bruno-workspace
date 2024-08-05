@@ -1,0 +1,16 @@
+meta {
+  name: Incorrect GET
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/erm/sass
+  body: none
+  auth: none
+}
+
+params:query {
+  ~perPage: 10
+  ~sort: reference;desc
+}

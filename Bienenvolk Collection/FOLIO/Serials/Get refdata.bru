@@ -1,0 +1,20 @@
+meta {
+  name: Get refdata
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{baseUrl}}/serials-management/refdata
+  body: none
+  auth: none
+}
+
+params:query {
+  ~filters: id!=4e59b3df-7d5c-4566-aa3e-798385bcd534
+  ~match: name
+  ~match: alternateNames.name
+  ~match: description
+  ~sort: agreementStatus.label;asc
+  ~stats: true
+}

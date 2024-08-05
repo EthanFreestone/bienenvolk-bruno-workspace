@@ -1,0 +1,36 @@
+meta {
+  name: POST Agreement
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/erm/sas
+  body: text
+  auth: none
+}
+
+params:query {
+  ~offset: 3
+  ~perPage: 3
+  ~filters: orgs.roles.role.value=content_provider
+}
+
+body:text {
+  {
+      "name": "EF Test Agreement",
+      "agreementStatus": "active",
+      "agreementContentTypes": [
+          {
+              "contentType": "books"
+          },
+          {
+              "contentType": "database"
+          }
+      ],
+      "periods": [{
+          "startDate": "2023-02-07"
+      }]
+      
+  }
+}

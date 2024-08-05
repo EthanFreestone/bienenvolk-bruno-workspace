@@ -1,0 +1,23 @@
+meta {
+  name: Get Package Sources
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{baseUrl}}/erm/packages/sources?stats=true
+  body: text
+  auth: none
+}
+
+params:query {
+  stats: true
+  ~match: name
+  ~match: identifiers.identifier.value
+  ~match: alternateResourceNames.name
+  ~match: description
+  ~term: JSTOR : Arts %26 Science
+  ~filters: identifiers isNotEmpty
+  ~filters: availabilityConstraints isNotEmpty
+  ~perPage: 25
+}

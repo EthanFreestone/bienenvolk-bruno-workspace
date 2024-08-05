@@ -1,0 +1,25 @@
+meta {
+  name: POST Custprop
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/erm/custprops
+  body: text
+  auth: none
+}
+
+body:text {
+  {
+      "weight": 0,
+      "primary": false,
+      "category": "2c9180b07f436083017f436311590030",
+      "retired": false,
+      "defaultInternal": true,
+      "label": "testMultiLocalDate",
+      "name": "testMultiLocalDate",
+      "description": "This is an decimal custprop",
+      "type": "MultiLocalDate"
+  }
+}

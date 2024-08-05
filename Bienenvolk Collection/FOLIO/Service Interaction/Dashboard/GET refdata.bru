@@ -1,0 +1,16 @@
+meta {
+  name: GET refdata
+  type: http
+  seq: 20
+}
+
+get {
+  url: {{baseUrl}}/servint/refdata?filters=desc=DashboardAccess.Access&perPage=100
+  body: none
+  auth: none
+}
+
+params:query {
+  filters: desc=DashboardAccess.Access
+  perPage: 100
+}

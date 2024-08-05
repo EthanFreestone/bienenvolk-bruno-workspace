@@ -1,0 +1,19 @@
+meta {
+  name: Get Entitlements
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/erm/entitlements?filters=owner.id=59512d8f-4793-412e-9258-0d69d26fd32b&sort=reference;asc
+  body: none
+  auth: none
+}
+
+params:query {
+  filters: owner.id=59512d8f-4793-412e-9258-0d69d26fd32b
+  sort: reference;asc
+  ~perPage: 10
+  ~stats: true
+  ~sort: reference;desc
+}

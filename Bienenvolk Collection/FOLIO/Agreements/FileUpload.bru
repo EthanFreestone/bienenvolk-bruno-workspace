@@ -1,0 +1,15 @@
+meta {
+  name: FileUpload
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/erm/files
+  body: multipartForm
+  auth: none
+}
+
+body:multipart-form {
+  upload: @file(/home/ethan/FolioModules/ExtraFiles/JSON Packages/Schema v2/brill-eg.json)
+}

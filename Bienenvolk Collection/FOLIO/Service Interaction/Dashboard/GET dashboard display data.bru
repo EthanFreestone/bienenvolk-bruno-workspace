@@ -1,0 +1,16 @@
+meta {
+  name: GET dashboard display data
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/servint/dashboard/{{myDashboardId}}/displayData
+  body: none
+  auth: none
+}
+
+params:query {
+  ~filters: id!=4e59b3df-7d5c-4566-aa3e-798385bcd534
+  ~stats: true
+}

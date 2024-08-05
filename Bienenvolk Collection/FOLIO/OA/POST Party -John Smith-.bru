@@ -1,0 +1,23 @@
+meta {
+  name: POST Party -John Smith-
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/oa/party
+  body: text
+  auth: none
+}
+
+body:text {
+  {
+      "phone": "07987654321",
+      "mobile": "07987654321",
+      "title": "Mr",
+      "orcidId": "456",
+      "mainEmail": "c@d.com",
+      "givenNames": "John",
+      "familyName": "Smith"
+  }
+}

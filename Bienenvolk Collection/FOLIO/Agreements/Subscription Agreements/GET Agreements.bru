@@ -1,0 +1,17 @@
+meta {
+  name: GET Agreements
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/erm/sas?stats=true
+  body: none
+  auth: none
+}
+
+params:query {
+  stats: true
+  ~perPage: 3
+  ~filters: alternateNames isNotEmpty %26%26 items isNotEmpty %7C%7C (alternateNames isEmpty %7C%7C tags isEmpty)
+}
