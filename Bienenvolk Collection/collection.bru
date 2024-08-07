@@ -2,7 +2,7 @@ script:pre-request {
   const { login, loginWithExpiry, setBaseUrl } = require('@kint/bruno_shared_scripts');
   setBaseUrl();
   
-  //await login();
-  await loginWithExpiry();
+  await login();
+  //await loginWithExpiry();
   
 }
