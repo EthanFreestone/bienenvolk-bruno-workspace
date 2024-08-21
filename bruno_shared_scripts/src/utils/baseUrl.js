@@ -8,7 +8,7 @@ const getBaseUrl = () => {
 
 const setBaseUrl = () => {
   const baseUrl = `${okapiProtocol}://${okapiUrl}${okapiPort ? ':' + okapiPort : ''}`;
-  console.log("WHAT IS BASEURL: %o", baseUrl)
+  //console.log("WHAT IS BASEURL: %o", baseUrl)
   bru.setEnvVar("baseUrl", baseUrl);
 };
 

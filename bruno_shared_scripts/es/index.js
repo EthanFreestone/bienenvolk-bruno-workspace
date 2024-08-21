@@ -100,7 +100,6 @@ var loginFunc = async (withExpiry = true) => {
         }
       }
     ).then((internalResp) => {
-      console.log("HEADERS: %o", internalResp.headers);
       const token = internalResp.headers["x-okapi-token"];
       bru.setVar("x-okapi-token-value", token);
     }).catch((err) => {
