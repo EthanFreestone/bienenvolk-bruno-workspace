@@ -41,7 +41,6 @@ var getBaseUrl = () => {
 };
 var setBaseUrl = () => {
   const baseUrl = `${okapiProtocol}://${okapiUrl}${okapiPort ? ":" + okapiPort : ""}`;
-  console.log("WHAT IS BASEURL: %o", baseUrl);
   bru.setEnvVar("baseUrl", baseUrl);
 };
 
@@ -83,8 +82,10 @@ var getLoginUrl = () => {
 var loginFunc = async (withExpiry = true) => {
   const ignoreCreds = getIgnoreCreds();
   const preExistingHeaders = req.getHeaders();
-  console.log("PEH: %o", preExistingHeaders);
-  req.setHeader("x-okapi-tenant", getTenant());
+  const preExistingTenant = preExistingHeaders[Object.keys(preExistingHeaders).find((key) => key.toLowerCase() === "X-Okapi-Tenant".toLowerCase())];
+  if (!preExistingTenant) {
+    req.setHeader("x-okapi-tenant", getTenant());
+  }
   if (!ignoreCreds || ignoreCreds === false) {
     const url = withExpiry ? getLoginWithExpiryUrl() : getLoginUrl();
     const creds = getCreds();
@@ -100,6 +101,7 @@ var loginFunc = async (withExpiry = true) => {
         }
       }
     ).then((internalResp) => {
+      req.setHeader("Cookie", internalResp.headers["set-cookie"]);
       const token = internalResp.headers["x-okapi-token"];
       bru.setVar("x-okapi-token-value", token);
     }).catch((err) => {

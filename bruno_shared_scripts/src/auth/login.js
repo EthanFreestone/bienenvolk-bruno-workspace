@@ -20,8 +20,14 @@ const loginFunc = async (withExpiry = true) => {
 
   // Ensure that x-okapi-tenant is set if NOT set by request
   const preExistingHeaders = req.getHeaders();
-  console.log("PEH: %o", preExistingHeaders);
-  req.setHeader('x-okapi-tenant', getTenant()) // Keep an eye on this in PM we needed some funky stuff for "disabled" headers
+  const preExistingTenant = preExistingHeaders[
+    Object.keys(preExistingHeaders).find((key) => key.toLowerCase() === 'X-Okapi-Tenant'.toLowerCase())
+  ] // Make sure this is case insensitive
+
+  if (!preExistingTenant) {
+    req.setHeader('x-okapi-tenant', getTenant()) // Keep an eye on this in PM we needed some funky stuff for "disabled" headers
+  }
+
   // Way to ignore creds for local endpoints
   if (!ignoreCreds || ignoreCreds === false) {
     const url = withExpiry ? getLoginWithExpiryUrl() : getLoginUrl();
@@ -40,6 +46,10 @@ const loginFunc = async (withExpiry = true) => {
       }
     ).then((internalResp) => {
       //console.log("HEADERS: %o", internalResp.headers)
+
+      // We can't seem to set the cookie jar programatically, so directly set cookies on request instead
+      req.setHeader('Cookie', internalResp.headers["set-cookie"])
+  
       const token = internalResp.headers["x-okapi-token"]
       bru.setVar("x-okapi-token-value", token)
     })
