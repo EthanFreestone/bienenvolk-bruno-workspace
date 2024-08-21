@@ -41,6 +41,7 @@ var getBaseUrl = () => {
 };
 var setBaseUrl = () => {
   const baseUrl = `${okapiProtocol}://${okapiUrl}${okapiPort ? ":" + okapiPort : ""}`;
+  console.log("WHAT IS BASEURL: %o", baseUrl);
   bru.setEnvVar("baseUrl", baseUrl);
 };
 
@@ -73,32 +74,34 @@ var getCreds = () => {
 var axios = require("axios");
 var getLoginWithExpiryUrl = () => {
   const baseUrl = getBaseUrl();
-  return `${baseUrl}/authn/login-with-expiry`;
+  return `${baseUrl}/bl-users/login-with-expiry`;
 };
 var getLoginUrl = () => {
   const baseUrl = getBaseUrl();
-  return `${baseUrl}/authn/login`;
+  return `${baseUrl}/bl-users/login`;
 };
-var loginFunc = async (withExpiry = true) => {
+var loginFunc = (withExpiry = true) => {
   const ignoreCreds = getIgnoreCreds();
   const preExistingHeaders = req.getHeaders();
   console.log("PEH: %o", preExistingHeaders);
   req.setHeader("x-okapi-tenant", getTenant());
   if (!ignoreCreds || ignoreCreds === false) {
     const url = withExpiry ? getLoginWithExpiryUrl() : getLoginUrl();
-    console.log(`Sending login request to ${url}`);
-    await axios.post(
+    const creds = getCreds();
+    const tenant = getTenant();
+    console.log(`Sending login request to ${url} with creds ${JSON.stringify(creds)} for tenant: ${tenant}`);
+    axios.post(
       url,
-      getCreds(),
+      creds,
       {
         headers: {
           "Content-type": "application/json",
-          "x-okapi-tenant": getTenant()
+          "x-okapi-tenant": tenant
         }
       }
     ).then((internalRes) => {
       const token = internalRes.headers.get("x-okapi-token");
-      console.log("INTERNAL RES: %o", internalRes);
+      console.log("INTERNAL RES: %o", JSON.stringify(internalRes));
       bru.setVar("x-okapi-token-value", token);
     }).catch((err) => {
       console.error("WHAT HAPPENED HERE: %o", err);

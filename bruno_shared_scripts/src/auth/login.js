@@ -7,7 +7,7 @@ const axios = require('axios'); // This comes from bruno context...
 // Right now login-with-expiry won't work against localhost
 const getLoginWithExpiryUrl = () => {
   const baseUrl = getBaseUrl();
-  return `${baseUrl}/authn/login-with-expiry`;
+  return `${baseUrl}/bl-users/login-with-expiry`;
 }
 
 const getLoginUrl = () => {
@@ -15,7 +15,7 @@ const getLoginUrl = () => {
   return `${baseUrl}/authn/login`;
 }
 
-const loginFunc = async (withExpiry = true) => {
+const loginFunc = (withExpiry = true) => {
   const ignoreCreds = getIgnoreCreds();
 
   // Ensure that x-okapi-tenant is set if NOT set by request
@@ -26,20 +26,23 @@ const loginFunc = async (withExpiry = true) => {
   // Way to ignore creds for local endpoints
   if (!ignoreCreds || ignoreCreds === false) {
     const url = withExpiry ? getLoginWithExpiryUrl() : getLoginUrl();
-    console.log(`Sending login request to ${url}`)
+    const creds = getCreds();
+    const tenant = getTenant();
+    console.log(`Sending login request to ${url} with creds ${JSON.stringify(creds)} for tenant: ${tenant}`);
+
     // This currently seems to crash bruno pretty spectacularly
-    await axios.post(
+    axios.post(
       url,
-      getCreds(),
+      creds,
       {
         headers: {
           "Content-type": "application/json",
-          "x-okapi-tenant": getTenant()
+          "x-okapi-tenant": tenant
         },
       }
     ).then((internalRes) => {
       const token = internalRes.headers.get("x-okapi-token")
-      console.log("INTERNAL RES: %o", internalRes)
+      console.log("INTERNAL RES: %o", JSON.stringify(internalRes))
       bru.setVar("x-okapi-token-value", token)
     })
     .catch(err => {
