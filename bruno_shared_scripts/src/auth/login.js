@@ -15,14 +15,13 @@ const getLoginUrl = () => {
   return `${baseUrl}/authn/login`;
 }
 
-const loginFunc = (withExpiry = true) => {
+const loginFunc = async (withExpiry = true) => {
   const ignoreCreds = getIgnoreCreds();
 
   // Ensure that x-okapi-tenant is set if NOT set by request
   const preExistingHeaders = req.getHeaders();
   console.log("PEH: %o", preExistingHeaders);
   req.setHeader('x-okapi-tenant', getTenant()) // Keep an eye on this in PM we needed some funky stuff for "disabled" headers
-  
   // Way to ignore creds for local endpoints
   if (!ignoreCreds || ignoreCreds === false) {
     const url = withExpiry ? getLoginWithExpiryUrl() : getLoginUrl();
@@ -30,8 +29,7 @@ const loginFunc = (withExpiry = true) => {
     const tenant = getTenant();
     console.log(`Sending login request to ${url} with creds ${JSON.stringify(creds)} for tenant: ${tenant}`);
 
-    // This currently seems to crash bruno pretty spectacularly
-    axios.post(
+    await axios.post(
       url,
       creds,
       {
@@ -40,9 +38,9 @@ const loginFunc = (withExpiry = true) => {
           "x-okapi-tenant": tenant
         },
       }
-    ).then((internalRes) => {
-      const token = internalRes.headers.get("x-okapi-token")
-      console.log("INTERNAL RES: %o", JSON.stringify(internalRes))
+    ).then((internalResp) => {
+      console.log("HEADERS: %o", internalResp.headers)
+      const token = internalResp.headers["x-okapi-token"]
       bru.setVar("x-okapi-token-value", token)
     })
     .catch(err => {
@@ -50,6 +48,7 @@ const loginFunc = (withExpiry = true) => {
     });
     
     if (!withExpiry) {
+      // This is only populated on login, not login with expiry
       req.setHeader('x-okapi-token', getToken())
     }
   }

@@ -78,9 +78,9 @@ var getLoginWithExpiryUrl = () => {
 };
 var getLoginUrl = () => {
   const baseUrl = getBaseUrl();
-  return `${baseUrl}/bl-users/login`;
+  return `${baseUrl}/authn/login`;
 };
-var loginFunc = (withExpiry = true) => {
+var loginFunc = async (withExpiry = true) => {
   const ignoreCreds = getIgnoreCreds();
   const preExistingHeaders = req.getHeaders();
   console.log("PEH: %o", preExistingHeaders);
@@ -90,7 +90,7 @@ var loginFunc = (withExpiry = true) => {
     const creds = getCreds();
     const tenant = getTenant();
     console.log(`Sending login request to ${url} with creds ${JSON.stringify(creds)} for tenant: ${tenant}`);
-    axios.post(
+    await axios.post(
       url,
       creds,
       {
@@ -99,9 +99,9 @@ var loginFunc = (withExpiry = true) => {
           "x-okapi-tenant": tenant
         }
       }
-    ).then((internalRes) => {
-      const token = internalRes.headers.get("x-okapi-token");
-      console.log("INTERNAL RES: %o", JSON.stringify(internalRes));
+    ).then((internalResp) => {
+      console.log("HEADERS: %o", internalResp.headers);
+      const token = internalResp.headers["x-okapi-token"];
       bru.setVar("x-okapi-token-value", token);
     }).catch((err) => {
       console.error("WHAT HAPPENED HERE: %o", err);
