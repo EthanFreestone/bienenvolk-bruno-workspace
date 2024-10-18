@@ -15,8 +15,9 @@ const getLoginUrl = () => {
   return `${baseUrl}/authn/login`;
 }
 
-const loginFunc = async (withExpiry = true) => {
+const loginFunc = async (urlOverride = undefined, withExpiry = true) => {
   const ignoreCreds = getIgnoreCreds();
+  console.log("URL OVERRIDE: %o", urlOverride)
 
   // Ensure that x-okapi-tenant is set if NOT set by request
   const preExistingHeaders = req.getHeaders();
@@ -30,7 +31,7 @@ const loginFunc = async (withExpiry = true) => {
 
   // Way to ignore creds for local endpoints
   if (!ignoreCreds || ignoreCreds === false) {
-    const url = withExpiry ? getLoginWithExpiryUrl() : getLoginUrl();
+    const url = urlOverride ?? (withExpiry ? getLoginWithExpiryUrl() : getLoginUrl());
     const creds = getCreds();
     const tenant = getTenant();
     console.log(`Sending login request to ${url} with creds ${JSON.stringify(creds)} for tenant: ${tenant}`);
@@ -64,8 +65,8 @@ const loginFunc = async (withExpiry = true) => {
   }
 };
 
-const login = () => loginFunc(false);
-const loginWithExpiry = () => loginFunc();
+const login = (urlOverride) => loginFunc(urlOverride, false);
+const loginWithExpiry = (urlOverride) => loginFunc(urlOverride);
 
 export {
   getTenant,

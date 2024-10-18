@@ -79,15 +79,16 @@ var getLoginUrl = () => {
   const baseUrl = getBaseUrl();
   return `${baseUrl}/authn/login`;
 };
-var loginFunc = async (withExpiry = true) => {
+var loginFunc = async (urlOverride = void 0, withExpiry = true) => {
   const ignoreCreds = getIgnoreCreds();
+  console.log("URL OVERRIDE: %o", urlOverride);
   const preExistingHeaders = req.getHeaders();
   const preExistingTenant = preExistingHeaders[Object.keys(preExistingHeaders).find((key) => key.toLowerCase() === "X-Okapi-Tenant".toLowerCase())];
   if (!preExistingTenant) {
     req.setHeader("x-okapi-tenant", getTenant());
   }
   if (!ignoreCreds || ignoreCreds === false) {
-    const url = withExpiry ? getLoginWithExpiryUrl() : getLoginUrl();
+    const url = urlOverride ?? (withExpiry ? getLoginWithExpiryUrl() : getLoginUrl());
     const creds = getCreds();
     const tenant = getTenant();
     console.log(`Sending login request to ${url} with creds ${JSON.stringify(creds)} for tenant: ${tenant}`);
@@ -112,5 +113,5 @@ var loginFunc = async (withExpiry = true) => {
     }
   }
 };
-var login = () => loginFunc(false);
-var loginWithExpiry = () => loginFunc();
+var login = (urlOverride) => loginFunc(urlOverride, false);
+var loginWithExpiry = (urlOverride) => loginFunc(urlOverride);
