@@ -8,7 +8,15 @@ git clone this repository to your local environment, and you should be ready to 
 
 This repository can be git cloned with `git clone git@github.com:EthanFreestone/bienenvolk-bruno-workspace.git --recurse-submodules` to bring in both the collection and the shared scripts npm.
 
-Once installed, run `npm install` from the top level. This should symlink the bruno-shared-scripts and bienenvolk-bruno-collection so it can be worked on in unison.
+Once installed, run `npm run clean-install` from the top level.
+This should build the bruno-shared-scripts and symlink them in the bienenvolk-bruno-collection so it can be worked on in unison.
+
+> NOTE: This relies on special config in bruno.json
+> - Specifically scripts.additionalConfigRoots = ["../"]
+> - I have not yet tested whether this would work in a workspace which does NOT include bruno-shared-scripts
+
 
 ## Making changes
-This workspace makes use of git submodules, so any changes should be made on branches in the requisite git repository, and submitted for PRs there. Once those are accepted and tested, the submodules can be brought up to the latest commit in this workspace. This should be done extremely carefully, so as not to leave the onboarding example in a state where it does not work.
+This workspace makes use of git submodules, so any changes should be made on branches in the requisite git repository, and submitted for PRs there.
+Once those are accepted and tested, the submodules can be brought up to the latest commit in this workspace.
+This should be done extremely carefully, so as not to leave the onboarding example in a state where it does not work.

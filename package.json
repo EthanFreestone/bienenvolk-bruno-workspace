@@ -1,4 +1,9 @@
 {
-  "name": "bienenvolk-bruno-workspace",
+  "name": "@k-int/bienenvolk-bruno-workspace",
+  "scripts": {
+    "clean": "rm -rf ./node_modules ./*/node_modules ./package-lock.json ./*/package-lock.json",
+    "build-shared-scripts": "cd bruno-shared-scripts && npm install && npm run build",
+    "clean-install": "npm run clean && npm run build-shared-scripts"
+  },
   "workspaces": ["bienenvolk-bruno-collection", "bruno-shared-scripts"]
 }
