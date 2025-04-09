@@ -1,0 +1,28 @@
+meta {
+  name: PUT AgreementLine
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/erm/entitlements/cf7836d2-6573-4a9a-88a7-a404d475e300
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "id": "cf7836d2-6573-4a9a-88a7-a404d475e300",
+      "docs": [{
+        "fileUpload": "2be099c5-6c9f-4227-8dfc-7f765f669ea9",
+        "name": "Test doc 2"
+      }]
+  }
+}
+
+body:text {
+  {
+      "id": "cf7836d2-6573-4a9a-88a7-a404d475e300",
+      ""
+  }
+}

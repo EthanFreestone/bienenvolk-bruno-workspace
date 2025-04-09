@@ -5,4 +5,8 @@ node_modules
 ModuleDescriptor.json
 
 .vscode
+
+.idea
+
 _dev_*
+
