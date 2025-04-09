@@ -1,0 +1,30 @@
+meta {
+  name: POST KB (GOKB)
+  type: http
+  seq: 15
+}
+
+post {
+  url: {{baseUrl}}/erm/kbs
+  body: json
+  auth: none
+}
+
+params:query {
+  ~expand: items
+  ~stats: true
+}
+
+body:json {
+  {
+      "name": "GOKb",
+      "type": "org.olf.kb.adapters.GOKbOAIAdapter",
+      "uri": "https://gokb.org/gokb/oai/index",
+      "rectype": 1,
+      "fullPrefix": "gokb",
+      "syncStatus": null,
+      "active": true,
+      "supportsHarvesting": true,
+      "activationEnabled": false
+  }
+}

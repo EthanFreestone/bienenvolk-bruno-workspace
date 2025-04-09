@@ -4,3 +4,4 @@ node_modules
 ModuleDescriptor.json
 
 .vscode
+.idea
