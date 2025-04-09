@@ -1,0 +1,4 @@
+{
+  "name": "bienenvolk-bruno-workspace",
+  "workspaces": ["bienenvolk-bruno-collection", "bruno-shared-scripts"]
+}

@@ -1,8 +1,12 @@
-# bienenvolk_bruno
-A test repository set up to store Bienenvolk Bruno collections for developers
+# bienenvolk-bruno-workspace
+Setting up a ready-to-go example workspace for using Bruno with the kint shared-bruno-scripts npm and bienenvolk-bruno-collection.
+
+The main point here is that this is an _example_ of how to set up a Bruno workspace, but this can (and perhaps should) be done by the individual developer, bringing in the shared scripts repository if and only if they need it, as well as bringing in individual git repository collections (or private ones) as they see fit, without muddying the waters of this example workspace.
 
 ## Installing
 git clone this repository to your local environment, and you should be ready to open `Bienenvolk Collection` directly inside Bruno.
+
+This repository can be git cloned with `git clone git@github.com:EthanFreestone/bienenvolk-bruno-workspace.git --recurse-submodules` to bring in both the collection and the shared scripts npm.
 
 ## Making changes to bruno_shared_scripts
 After making changes to the scripts, run:
