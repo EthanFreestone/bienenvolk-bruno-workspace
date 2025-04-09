@@ -1,3 +1,6 @@
 [submodule "bruno-shared-scripts"]
 	path = bruno-shared-scripts
 	url = git@github.com:EthanFreestone/bruno-shared-scripts.git
+[submodule "bienenvolk-bruno-collection"]
+	path = bienenvolk-bruno-collection
+	url = git@github.com:EthanFreestone/bienenvolk-bruno-collection.git
